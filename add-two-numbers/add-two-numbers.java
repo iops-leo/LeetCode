@@ -11,20 +11,19 @@
 import java.math.BigInteger;
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        BigInteger number1 = new BigInteger(makeNumber(l1));
-        BigInteger number2 = new BigInteger(makeNumber(l2));
+        BigInteger number1 = new BigInteger(makeNumber(l1).toString());
+        BigInteger number2 = new BigInteger(makeNumber(l2).toString());
         String result = String.valueOf(number1.add(number2));
-
         return makeNode(result,null,0);
     }
 
-    public String makeNumber(ListNode node){
-        String s = "";
+    public StringBuilder makeNumber(ListNode node){
+        StringBuilder s = new StringBuilder();
         if(node == null){
-            return "";
+            return s;
         }
-        s += makeNumber(node.next);
-        s += node.val;
+        s.append(makeNumber(node.next));
+        s.append(node.val);
         return s;
 
     }
